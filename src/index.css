@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 40% 98%;
+    --foreground: 220 10% 4%;
+    
+    /* Emerald Green Primary Colors */
+    --primary: 151 55% 42%;
+    --primary-foreground: 355 100% 100%;
+    
+    /* Complementary Colors */
+    --secondary: 151 30% 96%;
+    --secondary-foreground: 151 50% 20%;
+    
+    /* UI Elements */
+    --card: 0 0% 100%;
+    --card-foreground: 220 10% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 10% 4%;
+    --muted: 151 10% 96%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 151 30% 96%;
+    --accent-foreground: 151 50% 20%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+    
+    /* Borders and Inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 151 55% 42%;
+    
+    /* Charts */
+    --chart-1: 151 55% 42%;
+    --chart-2: 151 40% 60%;
+    --chart-3: 151 30% 75%;
+    --chart-4: 151 25% 85%;
+    --chart-5: 151 20% 92%;
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 220 40% 4%;
+    --foreground: 220 10% 98%;
+    
+    /* Emerald Green Primary Colors - Dark Mode */
+    --primary: 151 55% 50%;
+    --primary-foreground: 355 100% 100%;
+    
+    /* Complementary Colors - Dark Mode */
+    --secondary: 151 30% 12%;
+    --secondary-foreground: 151 50% 90%;
+    
+    /* UI Elements - Dark Mode */
+    --card: 220 40% 8%;
+    --card-foreground: 220 10% 98%;
+    --popover: 220 40% 8%;
+    --popover-foreground: 220 10% 98%;
+    --muted: 151 10% 16%;
+    --muted-foreground: 220 10% 70%;
+    --accent: 151 30% 16%;
+    --accent-foreground: 151 50% 90%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 98%;
+    
+    /* Borders and Inputs - Dark Mode */
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 151 55% 50%;
+    
+    /* Charts - Dark Mode */
+    --chart-1: 151 55% 50%;
+    --chart-2: 151 50% 45%;
+    --chart-3: 151 45% 40%;
+    --chart-4: 151 40% 35%;
+    --chart-5: 151 35% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
