@@ -3,7 +3,6 @@ import { Moon, Sun, Clock, Star, BedDouble, CloudMoon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { Progress } from '@/components/ui/progress';
 import {
   Select,
   SelectContent,
@@ -56,7 +55,7 @@ const sleepTips = [
   },
 ];
 
-export function SleepTracker() {
+export default function SleepTracker() {
   const [sleepDuration, setSleepDuration] = useState<number>(7);
   const [sleepQuality, setSleepQuality] = useState<number>(3);
   const [selectedStory, setSelectedStory] = useState<string>("");

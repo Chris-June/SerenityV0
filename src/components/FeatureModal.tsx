@@ -1,13 +1,14 @@
+import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useFeatureModal } from '@/hooks/use-feature-modal';
-import { MoodTracker } from './MoodTracker';
-import { BreathingExercise } from './BreathingExercise';
+import { MoodTracker } from '@/features/mood-tracking';
+import { BreathingExercise } from '@/features/breathing';
 import { CopingStrategies } from './CopingStrategies';
 import { HabitTracker } from './HabitTracker';
 import { AffirmationCard } from './AffirmationCard';
 import { SelfCareReminders } from './SelfCareReminders';
-import { SleepTracker } from './SleepTracker';
+import { SleepTracker } from '@/features/sleep-tracking';
 import { EmergencyResources } from './EmergencyResources';
 
 const featureComponents: Record<string, {

@@ -46,7 +46,10 @@ export type InteractionMode =
   | 'reflective'
   | 'visualization'
   | 'feedback'
-  | 'crisis';
+  | 'crisis'
+  | 'supportive'
+  | 'analytical'
+  | 'creative';
 
 export interface SystemConfig {
   identity: {

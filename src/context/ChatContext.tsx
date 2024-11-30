@@ -1,52 +1,29 @@
-import { createContext, useContext, useReducer, ReactNode } from 'react';
-import { Message, Mood, InteractionMode } from '@/types';
+import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import { initialState, chatReducer } from './chatUtils';
 
-interface ChatState {
-  messages: Message[];
-  moods: Mood[];
-  mode: InteractionMode;
+export interface Message {
+  id: string;
+  text: string;
+  sender: 'user' | 'assistant';
+  timestamp: string;
 }
 
-type ChatAction =
-  | { type: 'ADD_MESSAGE'; payload: Message }
-  | { type: 'ADD_MOOD'; payload: Mood }
-  | { type: 'SET_MODE'; payload: InteractionMode }
-  | { type: 'CLEAR_CHAT' };
+export interface ChatState {
+  messages: Message[];
+  isLoading: boolean;
+  error: string | null;
+}
 
-const initialState: ChatState = {
-  messages: [],
-  moods: [],
-  mode: 'conversational',
-};
+export type ChatAction =
+  | { type: 'ADD_MESSAGE'; payload: Message }
+  | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_ERROR'; payload: string | null }
+  | { type: 'CLEAR_MESSAGES' };
 
 const ChatContext = createContext<{
   state: ChatState;
   dispatch: React.Dispatch<ChatAction>;
-} | null>(null);
-
-function chatReducer(state: ChatState, action: ChatAction): ChatState {
-  switch (action.type) {
-    case 'ADD_MESSAGE':
-      return {
-        ...state,
-        messages: [...state.messages, action.payload],
-      };
-    case 'ADD_MOOD':
-      return {
-        ...state,
-        moods: [...state.moods, action.payload],
-      };
-    case 'SET_MODE':
-      return {
-        ...state,
-        mode: action.payload,
-      };
-    case 'CLEAR_CHAT':
-      return initialState;
-    default:
-      return state;
-  }
-}
+} | undefined>(undefined);
 
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(chatReducer, initialState);
@@ -60,7 +37,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
 
 export function useChat() {
   const context = useContext(ChatContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useChat must be used within a ChatProvider');
   }
   return context;

@@ -1,13 +1,14 @@
 import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ThemeToggle } from './ThemeToggle';
+import { Navigation } from './Navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { useNavigate } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useFeatureModal } from '@/hooks/use-feature-modal';
+import { Button } from '@/components/ui/button';
 
 const features = [
   { id: 'mood', label: 'Mood Tracker' },
@@ -20,19 +21,17 @@ const features = [
   { id: 'emergency', label: 'Emergency Resources' },
 ];
 
-export function Header() {
-  const { openModal } = useFeatureModal();
+export const Header = () => {
+  const navigate = useNavigate();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 flex">
-          <a href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold">Serenity</span>
-          </a>
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-6">
+          <span className="text-xl font-bold">Serenity</span>
+          <Navigation />
         </div>
-
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <div className="flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
@@ -40,21 +39,20 @@ export function Header() {
                 <span className="sr-only">Toggle features menu</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-[200px]">
+            <DropdownMenuContent align="end">
               {features.map((feature) => (
                 <DropdownMenuItem
                   key={feature.id}
-                  onClick={() => openModal(feature.id)}
+                  onClick={() => navigate(`/features/${feature.id}`)}
                 >
                   {feature.label}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-
           <ThemeToggle />
         </div>
       </div>
     </header>
   );
-}
+};
